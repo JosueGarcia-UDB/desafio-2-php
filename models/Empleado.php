@@ -15,6 +15,14 @@ class Empleado
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // Buscar empleados por nombre
+    public function search($termino)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM empleados WHERE nombre LIKE ?");
+        $stmt->execute(['%' . $termino . '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // Buscar empleado por ID
     public function getById($id)
     {

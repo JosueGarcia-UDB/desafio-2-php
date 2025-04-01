@@ -24,6 +24,9 @@
         case 'index':
             $controller->index();
             break;
+        case 'search':
+            $controller->search();
+            break;
         case 'show':
             $controller->show($id);
             break;
