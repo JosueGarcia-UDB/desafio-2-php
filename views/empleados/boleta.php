@@ -8,7 +8,7 @@
       <?php if ($empleado['foto']): ?>
         <img src="/Desafio_02/public/fotos/empleados/<?= $empleado['foto'] ?>" class="foto-empleado">
       <?php else: ?>
-        <img src="/Desafio_02/public/fotos/empleados/default.webp" class="foto-empleado">
+        <img src="/Desafio_02/public/fotos/empleados/default.jpg" class="foto-empleado">
       <?php endif; ?>
     </div>
 

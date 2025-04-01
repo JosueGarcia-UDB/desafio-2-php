@@ -40,7 +40,7 @@
               <?php if ($emp['foto']): ?>
                 <img src="/Desafio_02/public/fotos/empleados/<?= $emp['foto'] ?>" class="foto-miniatura">
               <?php else: ?>
-                <img src="/Desafio_02/public/fotos/empleados/default.webp" class="foto-miniatura">
+                <img src="/Desafio_02/public/fotos/empleados/default.jpg" class="foto-miniatura">
               <?php endif; ?>
             </td>
             <td><?= htmlspecialchars($emp['nombre']) ?></td>
