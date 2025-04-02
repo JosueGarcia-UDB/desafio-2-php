@@ -70,59 +70,122 @@ header h1 {
 }
 
 /* Botones mejorados */
-.btn {
+/* Estilos para links que actúan como botones */
+a.btn-nuevo,
+a.btn-editar,
+a.btn-eliminar,
+a.btn-ver,
+a.btn-limpiar,
+a.btn-volver {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.8rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 50px;
   text-decoration: none;
-  font-weight: 500;
-  transition: var(--transition);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-}
-
-.btn::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: -100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: 0.5s;
-}
-
-.btn:hover::after {
-  left: 100%;
-}
-
-.btn-nuevo {
-  background: var(--primary);
+  box-shadow: var(--shadow);
   color: white;
 }
 
-.btn-editar {
-  background: var(--warning);
-  color: var(--dark);
-}
-
-.btn-eliminar {
-  background: var(--danger);
+.btn-buscar,
+.btn-guardar {
+  display: inline-flex;
+  background-color: blue;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
   color: white;
 }
 
-.btn-ver {
-  background: var(--success);
-  color: white;
+/* Eliminar subrayado y efectos de link */
+a.btn-nuevo:link,
+a.btn-editar:link,
+a.btn-eliminar:link,
+a.btn-ver:link,
+a.btn-buscar:link,
+a.btn-limpiar:link,
+a.btn-volver:link,
+a.btn-nuevo:visited,
+a.btn-editar:visited,
+a.btn-eliminar:visited,
+a.btn-ver:visited,
+a.btn-buscar:visited,
+a.btn-limpiar:visited,
+a.btn-volver:visited {
+  text-decoration: none;
+  color: inherit;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+/* Contenedor de acciones en la tabla */
+.acciones {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Hover effects */
+a.btn-nuevo:hover,
+a.btn-volver:hover,
+a.btn-editar:hover,
+a.btn-eliminar:hover,
+a.btn-ver:hover,
+a.btn-buscar:hover,
+a.btn-limpiar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+/* Active state */
+a.btn-nuevo:active,
+a.btn-editar:active,
+a.btn-eliminar:active,
+a.btn-ver:active,
+a.btn-buscar:active,
+a.btn-limpiar:active,
+a.btn-volver:active {
+  transform: translateY(1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .acciones {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  a.btn-nuevo,
+  a.btn-editar,
+  a.btn-eliminar,
+  a.btn-ver,
+  a.btn-buscar,
+  a.btn-limpiar,
+  a.btn-volver {
+    width: 100%;
+    margin: 0.25rem 0;
+  }
 }
 
 /* Tabla moderna */
@@ -167,7 +230,7 @@ header h1 {
   transition: var(--transition);
 }
 
-.form-group input {
+input {
   width: 100%;
   padding: 1rem;
   border: 2px solid transparent;
@@ -176,6 +239,7 @@ header h1 {
   background: white;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  margin: 5px;
 }
 
 .form-group input:focus {
@@ -186,16 +250,100 @@ header h1 {
 
 /* Boleta de pago mejorada */
 .boleta {
+  max-width: 800px;
+  margin: 0 auto;
   background: white;
-  border-radius: 12px;
-  padding: 2rem;
+  border-radius: 15px;
+  padding: 2.5rem;
   box-shadow: var(--shadow);
   transition: var(--transition);
 }
 
-.boleta:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+.encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--light);
+}
+
+.detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ingresos, .descuentos {
+  background: var(--light);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.ingresos {
+  border-left: 5px solid var(--success);
+}
+
+.descuentos {
+  border-left: 5px solid var(--danger);
+}
+
+.ingresos h3, .descuentos h3 {
+  color: var(--dark);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+  padding-bottom: 0.5rem;
+}
+
+.totales {
+  background: var(--dark);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.totales h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+  font-size: 1.2rem;
+}
+
+.sueldo-liquido {
+  font-size: 2rem;
+  color: var(--success);
+  margin-top: 1.5rem;
+  border-top: 2px solid rgba(255,255,255,0.1);
+  padding-top: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Ajustes responsive para la boleta */
+@media (max-width: 768px) {
+  .boleta {
+    padding: 1.5rem;
+  }
+  
+  .totales h3 {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .sueldo-liquido {
+    text-align: center;
+  }
 }
 
 .foto-empleado {
@@ -309,4 +457,65 @@ footer strong {
   0% { opacity: 1; }
   50% { opacity: 0.5; }
   100% { opacity: 1; }
+}
+
+input[type="file"],
+input[name="foto"] {
+  padding: 0.8rem;
+  border: 2px dashed var(--primary);
+  border-radius: 8px;
+  background: rgba(52, 152, 219, 0.05);
+  cursor: pointer;
+  transition: var(--transition);
+  margin: 0.5rem 0;
+  color: var(--dark);
+}
+
+input[type="file"]:hover,
+input[name="foto"]:hover {
+  border-color: var(--secondary);
+  background: rgba(52, 152, 219, 0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Estilizar el texto del input file */
+input[type="file"]::file-selector-button,
+input[name="foto"]::file-selector-button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+input[type="file"]::file-selector-button:hover,
+input[name="foto"]::file-selector-button:hover {
+  background: var(--secondary);
+  transform: translateY(-1px);
+}
+
+/* Container para previsualización de imagen */
+.preview-container {
+  width: 150px;
+  height: 150px;
+  margin: 1rem auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+  box-shadow: var(--shadow);
+}
+
+.preview-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.preview-container img:hover {
+  transform: scale(1.1);
 }
