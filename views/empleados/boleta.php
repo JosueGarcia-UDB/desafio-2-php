@@ -1,4 +1,4 @@
-<?php include './partials/header.php'; ?>
+
 
 <div class="container">
   <h1>Boleta de Pago</h1>
@@ -37,5 +37,3 @@
   </div>
   <a href="index.php" class="btn-volver">Volver</a>
 </div>
-
-<?php include './partials/footer.php'; ?>

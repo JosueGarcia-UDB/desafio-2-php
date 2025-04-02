@@ -39,15 +39,11 @@ class Empleado
         if ($id) {
             $currentEmpleado = $this->getById($id);
         }
-
-        // Process photo only if a file was uploaded
         if (isset($_FILES['foto']) && $_FILES['foto']['error'] != UPLOAD_ERR_NO_FILE) {
             $foto = $this->handlePhotoUpload($_FILES['foto']);
         } else if ($id && $currentEmpleado) {
-            // Keep existing photo if editing and no new photo
             $foto = $currentEmpleado['foto'];
         } else {
-            // No photo for new records without upload
             $foto = null;
         }
 
@@ -131,8 +127,6 @@ class Empleado
         if ($file['error'] !== UPLOAD_ERR_OK) {
             return null;
         }
-
-        // Configuración de rutas - Fix path
         $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/Desafio_02/public/fotos/empleados/';
 
         // Crear directorio si no existe

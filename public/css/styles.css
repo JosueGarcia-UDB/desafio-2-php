@@ -1,12 +1,12 @@
 :root {
-  --primary: #3498db;
+  --primary: #09f;
   --secondary: #2c3e50;
   --success: #2ecc71;
   --danger: #e74c3c;
   --warning: #f1c40f;
   --light: #f5f7fa;
   --dark: #2c3e50;
-  --shadow: 0 2px 15px rgba(0,0,0,0.1);
+  --shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
 }
 
@@ -25,19 +25,33 @@ body {
   min-height: 100vh;
 }
 
+#body-all {
+  display: flex;
+  flex-direction: column;
+}
+
+td {
+  border-bottom: none !important;
+}
+
+main {
+  flex: 1;
+}
+
 /* Header con animación */
 header {
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
   padding: 1.5rem 0;
   box-shadow: var(--shadow);
-  animation: headerLoad 0.8s ease-out;
+  animation: headerLoad 0.5ms ease-out;
 }
 
 @keyframes headerLoad {
   from {
     transform: translateY(-100%);
   }
+
   to {
     transform: translateY(0);
   }
@@ -47,7 +61,7 @@ header h1 {
   text-align: center;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 300;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Container responsivo */
@@ -55,7 +69,7 @@ header h1 {
   width: min(1200px, 95%);
   margin: 2rem auto;
   padding: 0 20px;
-  animation: fadeIn 0.5s ease-out;
+  animation: fadeIn 0.5ms ease-out;
 }
 
 @keyframes fadeIn {
@@ -63,6 +77,7 @@ header h1 {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -96,10 +111,14 @@ a.btn-volver {
   color: white;
 }
 
+.gestion-empleado-title {
+  text-align: center;
+}
+
 .btn-buscar,
 .btn-guardar {
   display: inline-flex;
-  background-color: blue;
+  background-color: var(--primary);
   align-items: center;
   justify-content: center;
   padding: 0.8rem 1.5rem;
@@ -118,6 +137,13 @@ a.btn-volver {
   color: white;
 }
 
+.btn-form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
 /* Eliminar subrayado y efectos de link */
 a.btn-nuevo:link,
 a.btn-editar:link,
@@ -130,7 +156,7 @@ a.btn-nuevo:visited,
 a.btn-editar:visited,
 a.btn-eliminar:visited,
 a.btn-ver:visited,
-a.btn-buscar:visited,
+button.btn-buscar:visited,
 a.btn-limpiar:visited,
 a.btn-volver:visited {
   text-decoration: none;
@@ -140,8 +166,7 @@ a.btn-volver:visited {
 /* Contenedor de acciones en la tabla */
 .acciones {
   display: flex;
-  gap: 0.5rem;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -151,10 +176,10 @@ a.btn-volver:hover,
 a.btn-editar:hover,
 a.btn-eliminar:hover,
 a.btn-ver:hover,
-a.btn-buscar:hover,
+button.btn-buscar:hover,
 a.btn-limpiar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   text-decoration: none;
 }
 
@@ -185,7 +210,27 @@ a.btn-volver:active {
   a.btn-volver {
     width: 100%;
     margin: 0.25rem 0;
+    padding: 10px;
   }
+}
+
+.opciones-lista {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.form-busqueda {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.subtitle {
+  text-align: center;
 }
 
 /* Tabla moderna */
@@ -203,18 +248,17 @@ a.btn-volver:active {
   background: var(--secondary);
   color: white;
   padding: 1.2rem;
-  text-align: left;
+  text-align: center;
   font-weight: 500;
 }
 
 .tabla-empleados td {
-  padding: 1rem;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 0.75rem;
   transition: var(--transition);
 }
 
-.tabla-empleados tr:hover td {
-  background: rgba(52, 152, 219, 0.05);
+.td-center{
+  text-align: left !important;
 }
 
 /* Formularios modernos */
@@ -276,7 +320,8 @@ input {
   gap: 2rem;
 }
 
-.ingresos, .descuentos {
+.ingresos,
+.descuentos {
   background: var(--light);
   padding: 1.5rem;
   border-radius: 12px;
@@ -291,11 +336,12 @@ input {
   border-left: 5px solid var(--danger);
 }
 
-.ingresos h3, .descuentos h3 {
+.ingresos h3,
+.descuentos h3 {
   color: var(--dark);
   margin-bottom: 1rem;
   font-size: 1.3rem;
-  border-bottom: 2px solid rgba(0,0,0,0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 0.5rem;
 }
 
@@ -323,7 +369,7 @@ input {
   font-size: 2rem;
   color: var(--success);
   margin-top: 1.5rem;
-  border-top: 2px solid rgba(255,255,255,0.1);
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
   padding-top: 1.5rem;
   text-align: center;
   font-weight: 600;
@@ -334,13 +380,13 @@ input {
   .boleta {
     padding: 1.5rem;
   }
-  
+
   .totales h3 {
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
   }
-  
+
   .sueldo-liquido {
     text-align: center;
   }
@@ -432,16 +478,16 @@ footer strong {
   .container {
     padding: 0 15px;
   }
-  
+
   .acciones {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .btn {
     width: 100%;
   }
-  
+
   .tabla-empleados {
     display: block;
     overflow-x: auto;
@@ -454,9 +500,17 @@ footer strong {
 }
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 input[type="file"],
@@ -475,7 +529,7 @@ input[type="file"]:hover,
 input[name="foto"]:hover {
   border-color: var(--secondary);
   background: rgba(52, 152, 219, 0.1);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilizar el texto del input file */

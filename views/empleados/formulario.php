@@ -1,8 +1,7 @@
-<?php include './partials/header.php'; ?>
+
 
 <div class="container">
-  <h2><?= isset($empleado) ? 'Editar' : 'Nuevo' ?> Empleado</h2>
-
+  <h2 class="subtitle"><?= isset($empleado) ? 'Editar' : 'Crear Nuevo' ?> Empleado</h2>
   <form action="index.php?action=store" method="POST" enctype="multipart/form-data">
     <?php if (isset($empleado)): ?>
       <input type="hidden" name="id" value="<?= $empleado['id'] ?>">
@@ -36,9 +35,9 @@
       <label>Foto:</label>
       <input type="file" name="foto">
     </div>
-
-    <button type="submit" class="btn-guardar">Guardar</button>
+    <div class="btn-form">
+      <button type="submit" class="btn-guardar">Guardar</button>
+    </div>
+    <a href="index.php" class="btn-volver">Volver</a>
   </form>
 </div>
-
-<?php include './partials/footer.php'; ?>
